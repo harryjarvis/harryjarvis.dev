@@ -7,7 +7,7 @@ function Onboarding() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    const audio = new Audio('/public/win95-startup.mp3'); // must be in /public folder
+    const audio = new Audio('/win95-startup.mp3'); // must be in /public folder
     audio.play().catch(err => {
       console.log("Autoplay blocked:", err);
     });
