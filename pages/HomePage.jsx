@@ -1,7 +1,10 @@
+import '/src/index.css';
 export default function HomePage() {
     return (
-      <div>
-        <h1>THIS IS WORK IN PROGRESS</h1>
+      <div className="bliss">
+        <div className="taskbar">
+          
+        </div>
       </div>
     )
   }

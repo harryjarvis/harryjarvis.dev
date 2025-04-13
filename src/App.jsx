@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import HomePage from '/pages/HomePage.jsx'; // use relative path!
-import './App.css';
+import './index.css';
 
 // Onboarding screen component
 function Onboarding() {
@@ -25,7 +25,7 @@ function Onboarding() {
           <img src="/HJw95.png" alt="harry-jarvis-portfolio" className="hjp-logo" />
           <div className="right-side">
             <div className="teal-box" onClick={handleClick}>
-              <img src="/chess.png" alt="chess-picture-xp" className="user-icon" />
+              <img src="/skins.jpg" alt="chess-picture-xp" className="user-icon" />
               <p className="user-click">User</p>
             </div>
             <p className="user-desc">To begin, click your user name</p>
