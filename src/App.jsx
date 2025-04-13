@@ -22,7 +22,7 @@ function Onboarding() {
     <div className="centre-box">
       <div className="styled-box">
         <div className="inner-content">
-          <img src="/profile.png" alt="harry-jarvis-portfolio" className="hjp-logo" />
+          <img src="/HJw95.png" alt="harry-jarvis-portfolio" className="hjp-logo" />
           <div className="right-side">
             <div className="teal-box" onClick={handleClick}>
               <img src="/chess.png" alt="chess-picture-xp" className="user-icon" />
