@@ -7,7 +7,7 @@ function Onboarding() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    const audio = new Audio('/win95-startup.mp3'); // must be in /public folder
+    const audio = new Audio('/skins2.mp3'); // must be in /public folder
     audio.play().catch(err => {
       console.log("Autoplay blocked:", err);
     });
@@ -15,7 +15,7 @@ function Onboarding() {
     // Navigate after short delay to let audio play (optional)
     setTimeout(() => {
       navigate('/home');
-    }, 300); // Delay is optional; adjust to your liking
+    }, 500); // Delay is optional; adjust to your liking
   };
 
   return (
@@ -25,7 +25,7 @@ function Onboarding() {
           <img src="/HJw95.png" alt="harry-jarvis-portfolio" className="hjp-logo" />
           <div className="right-side">
             <div className="teal-box" onClick={handleClick}>
-              <img src="/skins.jpg" alt="chess-picture-xp" className="user-icon" />
+              <img src="/chess.png" alt="User Icon" className="user-icon" />
               <p className="user-click">User</p>
             </div>
             <p className="user-desc">To begin, click your user name</p>
