@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'Win95'; /* Give a name to your font */
+    src: url('../fonts/W95FA.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Win95Bold'; /* win 95 bold */
+    src: url('../fonts/W95AFAbold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  :root{
+    --taskbar-gray: #c0c0c0;
+    --hover-blue: #040d91;
+  }
+
+/* desktop item window topbars */
+
+.dragbar{
+  height: 24px;
+  width: 496px;
+  max-width: 100%;
+  color: white;
+  background-color: var(--hover-blue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dragbar-left{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+}
+
+.dragbar-icon{
+  height: 16px;
+  padding: 0px 4px 0px 4px;
+}
+
+.dragbar-right{
+  display: flex;
+  justify-content: flex-end;
+  color: black;
+  margin: 3px;
+  padding-top: 2px;
+  align-items: center;
+}
+
+.minimise-btn{
+  background-color: var(--taskbar-gray);
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18px;
+  width: 18px;
+  padding-right: 1.5px;
+  padding-bottom: 2px;
+  box-shadow: inset -1px -1px 0px 1px black, inset 1px 1px 0px white;
+}
+
+.resize-btn{
+  background-color: var(--taskbar-gray);
+  padding: 1px 2px 0px 0px;
+  height: 18px;
+  width: 18px;
+  margin-left: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset -1.5px -1.5px 0px 1px black, inset 1px 1px 0px white;
+}
+
+.close-btn{
+  background-color: var(--taskbar-gray);
+  font-size: 20px;
+  margin-left: 2px;
+  display: flex;
+  padding: 0px 2px 3px 0px;
+  justify-content: center;
+  align-items: center;
+  height: 18px;
+  width: 18px;
+  box-shadow: inset -1.5px -1.5px 0px 1px black, inset 1px 1px 0px white;
+}
+
+/* About Me */
+
+.biography-window{
+  box-shadow: inset -2px -2px black;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.biography-pic-1 {
+  width: 210px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.biography-content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.biography-picture-container {
+  flex-shrink: 0;
+  width: 210px;
+}
+
+.biography-content-right {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+}
+
+.biography-title {
+  font-family: 'Win95';
+  padding-left: 10px;
+  padding-top: 3px;
+  font-size: 32px;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+.biography-line1 {
+  font-size: 13px;
+  color: rgb(93, 93, 93);
+  padding-left: 10px;
+}
+
+.biography-line2 {
+  font-size: 13px;
+  color: rgb(93, 93, 93);
+  padding-left: 7px;
+  padding-top: 6px;
+}
+
+.biography-line3 {
+  font-size: 13px;
+  color: rgb(93, 93, 93);
+  padding-left: 7px;
+  padding-right: 12px;
+}
+
+.programming-buttons{
+  gap: 6px;
+  display: flex;
+  padding-top: 7px;
+  padding-left: 11px;
+  flex-wrap: wrap;
+  max-width: 100%;
+  align-items: center;
+}
+
+.programming-buttons img{
+  object-fit: contain;
+  flex-shrink: 0;
+  height: 18px;
+}

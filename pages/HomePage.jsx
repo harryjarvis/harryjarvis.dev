@@ -141,6 +141,14 @@ useEffect(() => {
   };
 }, [draggingWindow]);
 
+/* PLACE DIVS HERE */
+/* PLACE DIVS HERE */
+/* PLACE DIVS HERE */
+/* PLACE DIVS HERE */
+/* PLACE DIVS HERE */
+/* PLACE DIVS HERE */
+/* PLACE DIVS HERE */
+
   return (
     <div className="bliss">
 
@@ -213,11 +221,11 @@ useEffect(() => {
         position: 'absolute',
         top: win.position.y,
         left: win.position.x,
-        width: '400px',
+        width: '500px',
+        minWidth: '500px',
         height: '400px',
         backgroundColor: 'var(--taskbar-gray)',
         border: '2px solid white',
-        border: '1px solid black',
         zIndex: 1000,
       }}>
       <div className="biography-window-topbar">
@@ -231,13 +239,50 @@ useEffect(() => {
           <button className="biography-close-btn" onClick={() => closeWindow(name)}>x</button>
         </div>
       </div>
+
+      <div className="biography-content">
+        <div className="biography-picture-container">
+          <img src="/HJ.png" alt="me!" className="biography-pic-1"/>
+        </div>
+
+        <div className="biography-content-right">
+          
+          <h1 className="biography-title">Harry Jarvis</h1>
+          <h1 className="biography-line1">Economics Graduate @ Manchester Metropolitan University,
+          aspiring front-end web developer  
+          </h1>
+
+          <h1 className="biography-line2">📍 Manchester, UK</h1>
+
+          <div className="programming-buttons">
+            <img className="JS" alt="JavaScript" src="https://img.shields.io/badge/-Javascript-green"/>
+            <img className="HTML/CSS" alt="HTML/CSS" src="https://img.shields.io/badge/-HTML/CSS-orange"/>
+            <img className="React" alt="React" src="https://img.shields.io/badge/-React-blue"/>
+            <img className="SQL" alt="SQL" src="https://img.shields.io/badge/-SQL-red"/>
+            <img className="Figma" alt="Figma" src="https://img.shields.io/badge/-Figma-purple"/>
+            <img className="Photoshop" alt="Photoshop" src="https://img.shields.io/badge/-Photoshop-gray"/>
+          </div>
+
+          <h1 className="biography-line3">"On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and 
+            demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the
+             pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through 
+             weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly
+              simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents 
+              our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain 
+              circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures
+               have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle 
+               of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains."</h1>
+        </div>
+      </div>
+
     </div>
+
   ) : null
 )}
 
 {/* Music */}
 
-      {/* Taskbar */}
+{/* Taskbar */}
       <div className="taskbar">
 
  {/*      <button className="start-button" onClick={handleStartButtonClick}>

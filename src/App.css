@@ -1,1 +1,303 @@
+@import "tailwindcss";
 
+@font-face {
+  font-family: 'Win95'; /* Give a name to your font */
+  src: url('../fonts/W95FA.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Win95Bold'; /* win 95 bold */
+  src: url('../fonts/W95AFAbold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* website-wide styles */
+
+:root{
+  --taskbar-gray: #c0c0c0;
+  --hover-blue: #040d91;
+  --dark-gray: #7b7d7b;
+  font-family: 'Win95';
+}
+
+/* home screen */
+
+.desktop {
+  background-image: url('/background-2.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+}
+
+/* taskbar */
+
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 34px;
+  background-color: var(--taskbar-gray);
+  border-top: 1px solid white;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding-left: 4px;
+  box-sizing: border-box;
+}
+
+.start-button {
+  display: flex;
+  align-items: center;
+  background-color: var(--taskbar-gray);
+  border: 1px outset white;
+  padding: 3px 5px 3px 3px;
+  font-size: 14px;
+  margin: 3px 0px 3px 0px;
+  height: 28px;
+  cursor: pointer;
+  box-shadow: inset -1.5px -1.5px 0px 1px black, inset 1px 1px 0px white;
+}
+
+.start-button-active {
+  box-shadow: inset -1px -1px 0px white, inset 3px 3px 0px black;
+}
+
+.start-icon {
+  height: 24px;
+  margin-right: 2px;
+}
+
+.start-text {
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.clock {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: auto;
+  margin-right: 8px;
+  background-color: var(--taskbray-gray);
+  padding: 2px 6px;
+  width: fit-content;
+  height: 25px;
+  font-size: 13px;
+  color: black;
+  cursor: pointer;
+  box-shadow: -1px -1px black, 1px 1px white;
+}
+
+.right-task-icon {
+  height: 18px;
+  width: auto;
+}
+
+/* calendar styling */
+
+.calendar-model {
+  display: grid;
+  position: absolute;
+  place-items: center;
+  width: fit-content;
+  height: auto;
+  background: var(--taskbar-gray);
+  border: 2px solid white;
+  border-bottom-color: black;
+  border-right-color: black;
+  padding: 10px;
+  bottom: 2.8rem;
+  right: 5px;
+  z-index: 999;
+  overflow: hidden;
+  font-family: 'Win95', sans-serif;
+}
+
+/* Win95 calendar base */
+.react-calendar {
+ display: grid;
+ width: 235px;
+ height: 180px;
+ place-items: center;
+ text-align: center;
+}
+
+/* Navigation (Month + Arrows) */
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-around;
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.react-calendar__navigation button {
+  font-size: 13px;
+  border-radius: 0;
+  background-color: rgba(234, 234, 234);
+  border: 1px solid black;
+  border-top-color: white;
+  border-left-color: white;
+  color: black;
+  padding: 3px 6px;
+}
+
+/* Weekday Headers */
+.react-calendar__month-view__weekdays {
+  position: relative;
+  font-size: 12px;
+}
+
+.react-calendar__month-view__days {
+  padding: 2px;
+  background-color: rgb(234, 234, 234);
+}
+
+.react-calendar__month-view__days button {
+  font-size: 12px;
+  border: none;
+  padding: 4px;
+}
+
+.react-calendar__tile--now {
+  background-color: #a0a0a0;
+  font-weight: bold;
+  color: white;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #8c8c8c;
+}
+
+/* start menu */
+
+.start-menu {
+  position: fixed;
+  bottom: 31px;
+  left: 0;
+  width: 175px;
+  height: 280px;
+  background-color: var(--taskbar-gray);
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-right: 2px solid black;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  font-family: 'Win95', sans-serif;
+}
+
+.start-menu-left {
+  width: 28px;
+  background-color: #7b7d7b;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 280px;
+  border-bottom: 2px solid black;
+}
+
+.start-menu-left img{
+    width: 22px;
+    height: auto;
+    margin-bottom: 8px;
+}
+
+.start-menu-right{
+  flex-grow: 1;
+  background-color: var(--taskbar-gray);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 280px;
+  border-bottom: 2px solid black;
+  font-size: 13px;
+}
+
+/* right contents */
+
+.start-menu-right img{
+  height: 27px;
+  width: auto;
+  padding-left: 10px;
+}
+
+.start-item {
+  display: grid;
+  grid-template-columns: 48px 1fr 12px;
+  align-items: center;
+  height: 40px;
+  cursor: pointer;
+  color: black;
+  background-color: (--taskbar-gray);
+}
+
+.start-item-arrow {
+  font-size: 8px;
+}
+
+.start-item-shutdown {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  align-items: center;
+  height: 40px;
+  cursor: pointer;
+  color: black;
+  border-top: 1px outset white;
+  box-shadow: 0 -1px 0 gray;
+  background-color: (--taskbar-gray);
+}
+
+.start-item:hover{
+  background-color: var(--hover-blue);
+  color: white;
+}
+
+.start-item-shutdown:hover{
+  background-color: var(--hover-blue);
+  color: white;
+}
+
+/* desktop icons */
+
+.desktop-icons-container{
+position: absolute;
+display: flex;
+flex-direction: column;
+padding: 18px 0px 0px 10px;
+color: white;
+gap: 25px;
+font-size: 15px;
+width: 82px;
+}
+
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.desktop-icon-cs {
+  text-align: center;
+  display: block;
+  line-height: 1.2;
+}
+
+.desktop-icon img{
+  height: 34px;
+  width: 34px;
+}
+
+/* selected icons */
+.desktop-icon-selected {
+  outline: 1px dotted white;
+  background-color: var(--hover-blue);
+  border-radius: 4px;
+}
