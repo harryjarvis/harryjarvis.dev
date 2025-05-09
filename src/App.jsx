@@ -4,9 +4,9 @@ import Popups from './Popups.jsx';
 import { useEffect, useRef, useState } from 'react';
 import Calendar from 'react-calendar';
 import useOnClickOutside from './hooks/useOnClickOutside';
+import Popup from 'reactjs-popup';
 
-// Clock component
-function Clock( { onClick }) {
+function Clock({ onClick, calendarRef }) {
   const [time, setTime] = useState(() => new Date()); // initial time state
 
   useEffect(() => {
@@ -21,7 +21,17 @@ function Clock( { onClick }) {
     hour12: true,
   });
 
-  return <span onClick={onClick}>{formattedTime.toUpperCase()}</span>;
+  return (
+    <span
+      onClick={() => {
+        if (onClick) onClick(); // trigger passed click
+        // Optional: do something with calendarRef.current
+        // console.log(calendarRef?.current);
+      }}
+    >
+      {formattedTime.toUpperCase()}
+    </span>
+  );
 }
 
 // Main component: HomePage
@@ -32,8 +42,6 @@ export default function App() {
   const [isCalendarVisible, setIsCalendarVisible] = useState(false);
   // State to control whether start menu is visible
   const [isStartMenuVisible, setIsStartMenuVisible] = useState(false);
-
-  const [isCsVisible, setIsCsVisible] = useState(false);
 
   const [selectedIcon, setSelectedIcon] = useState(null);
 
@@ -57,8 +65,6 @@ export default function App() {
   };
 
   // click outside to close menus
-  //
-  // 
 
   useOnClickOutside(calendarRef, (e) => {
     if (calendarButtonRef.current && calendarButtonRef.current.contains(e.target)) {
@@ -137,24 +143,109 @@ export default function App() {
     };
   }, [draggingWindow]);
 
+    // welcome popup
+  const [showPopup, setShowPopup] = useState(false);
+
+  const closePopup = () => setShowPopup(false);
+  const openPopup = () => setShowPopup(true);
+
+  useEffect(() => {
+    setShowPopup(true);
+    
+  }, []);
+
+  // whats new popup
+
+  const [isWhatsNewOpen, setIsWhatsNewOpen] = useState(false);
+  const toggleWhatsNew = () => setIsWhatsNewOpen(prev => !prev);
+
   return (
-    <div className="desktop" onClick={() => setSelectedIcon(null)}>
+    <div className="desktop">
+
+<Popup
+  open={showPopup}  // Determines whether the popup is open
+  onClose={closePopup}  // Close function for the popup
+  closeOnDocumentClick={false}
+  contentStyle={{
+    background: '#c0c4c8',  // Background color
+    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',  // Box-shadow
+    width: '600px',  // Width
+    height: '305px',
+    margin: 'auto',  // Center alignment
+    boxShadow: "3px 3px black",
+    border: '2px solid white',
+    display: 'flex',
+    flexDirection: 'column',
+  }}
+  overlayStyle={{
+    background: 'rgba(0, 0, 0, 0.4)',
+  }}
+>
+    <div className="welcome-dragbar">
+      <div className="welcome-dragbar-left">
+        <img src="/information.png" alt="info"/>
+        <span>Welcome</span>
+      </div>
+
+      <div className="welcome-dragbar-right">
+        <button className="window-btn close-btn welcome-close-btn" onClick={() => closePopup()}>×</button>
+      </div>
+    </div>
+
+    <div className="welcome-content">
+      <div className="welcome-logo">
+          <h1>Welcome to my portfolio!</h1>
+      </div>
+
+      <div className="welcome-middle-content">
+        <div className="welcome-middle-info">
+
+          <div className="wmi-top">
+            <img src="/lightbulb.png" alt="lightbulb"/>
+            <span>Did you know ...</span>
+          </div>
+          <div className="wmi-bottom">
+            <p>This website was made using Vite, React and Tailwind,</p>
+            <p>I started it on April 10th 2025,</p>
+            <p>It's the first full website I have made and my gateway into web development.</p>
+          </div>
+        </div>
+
+        <div className="welcome-middle-buttons">
+          <button
+            className={`welcome-btn ${selectedIcon === 'whatsnew' ? 'welcome-btn-active' : ''}`}
+            onClick={() => {
+              closePopup()
+              openWindow("whatsnew")
+            }}>
+             
+            <span>What's<u> N</u>ew</span>
+          </button>
+          <button className="welcome-btn" onClick={() => closePopup()}>
+            <span>Close</span>
+          </button>
+          
+        </div>
+      </div>
+
+      <div className="welcome-bottom-content">
+        <p>To return to this menu, click the information icon in the bottom right!</p>
+      </div>
+    </div>
+</Popup>
 
       {/* desktop-icons */}
       <div className="desktop-icons-container">
 
           {/* biography */}
           <div
-          className={`desktop-icon biography ${selectedIcon === 'biography' ? 'desktop-icon-selected' : ''}`}
-            onDoubleClick={() => {
-              openWindow("biography")
-              setSelectedIcon(null);
-              }}
+          className={`desktop-icon biography ${selectedIcon === 'biography' ? 'selected-icon' : ''}`}
+            onDoubleClick={() => openWindow("biography")}
               onClick={(e) => {
                 e.stopPropagation();
                 setSelectedIcon('biography');
           }}>
-            <img src="/file.png" alt="biography-icon" className="desktop-icon"/>
+            <img src="/manpc.png" alt="biography-icon"/>
             <span>About Me</span>
           </div>
 
@@ -166,7 +257,7 @@ export default function App() {
                 e.stopPropagation();
                 setSelectedIcon('music');
           }}>
-            <img src="/napster.png" alt="music-icon"/>
+            <img src="/music.png" alt="music-icon"/>
             <span>My Music</span>
           </div>
 
@@ -188,14 +279,15 @@ export default function App() {
           </div>
 
           {/* steam */}
-          <div className="desktop-icon">
+          <div
+          className={`desktop-icon steam ${selectedIcon === 'steam' ? 'selected-icon' : ''}`}
+            onDoubleClick={() => openWindow("steam")}
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedIcon('steam');
+          }}>
             <img src="/steam.png" alt="steam-icon"/>
             <span>Steam</span>
-          </div>
-
-          <div className="desktop-icon">
-            <img src="/counterstrike.png" alt="cs-icon"/>
-            <span className="desktop-icon-cs">Counter <br />Strike</span>
           </div>
           
       </div>
@@ -217,9 +309,12 @@ export default function App() {
         </button>
 
         {/* Clock */}
-        <div ref={calendarButtonRef} onClick={handleTimeBoxClick} className="clock">
-          <img src="/network.png" alt="network" className="right-task-icon"/>
-          <Clock/>
+        <div className="clock">
+          <img src="/information.png" alt="network"
+            onClick={openPopup}/>
+          <Clock
+            onClick={handleTimeBoxClick}
+            calendarRef={calendarButtonRef}/>
         </div>
 
         {/* Calendar (shows on toggle) */}
@@ -238,7 +333,7 @@ export default function App() {
         <div className="start-menu" ref={startMenuRef}>
 
           <div className="start-menu-left">
-            <img src="/HJ25(1).png" alt="start-menu-left-logo" />
+            <img src="/harryjarvis25v.png" alt="start-menu-left-logo" />
           </div>
 
           <div className="start-menu-right">
